@@ -231,7 +231,14 @@ class TestLinkedList(unittest.TestCase):
         test_list.add_in_tail(n4)
         finding2=test_list.find_all(2)
         self.assertIn(n2, finding2)
-        self.assertIn(n4, finding2)    
+        self.assertIn(n4, finding2)
+        self.assertEqual(len(finding2),2, "The length of list is 2")
+
+    def test_find_all_empty_list(self):
+        test_list=LinkedList()
+        finding_zero_list=test_list.find_all(2)
+        self.assertEqual(len(finding_zero_list), 0, "The length of list is 0")
+        self.assertEqual(type(finding_zero_list), list, "The return value is list" )
     
 
 if __name__ == "__main__":

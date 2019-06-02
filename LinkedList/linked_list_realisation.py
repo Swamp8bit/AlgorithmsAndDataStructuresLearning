@@ -57,16 +57,13 @@ class LinkedList:
         self.tail = None
     
     def find_all(self, val):
-        node=self.head
         finding=[]
+        node=self.head    
         while node is not None:
             if node.value == val:
                 finding.append(node)
-            node=node.next
-        if len(finding) == 0:
-            return None
-        else:
-            return finding
+            node=node.next        
+        return finding
     def len(self):
         node = self.head
         length=0
