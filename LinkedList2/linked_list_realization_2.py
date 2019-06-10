@@ -69,15 +69,8 @@ class LinkedList2:
                 if all==False:
                     break               
             
-            node=node_next
- 
+            node=node_next    
     
-    def print_all_nodes(self):
-        node=self.head
-        while node is not None:
-            print(node.value)
-            node = node.next
-
     def clean(self):
         self.head=None
         self.tail=None    
