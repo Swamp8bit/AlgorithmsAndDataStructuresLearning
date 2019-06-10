@@ -20,7 +20,7 @@ class TestLinkedList2(unittest.TestCase):
         test_list.add_in_tail(n1)
         self.assertEqual(test_list.head,n1, "n1 is head")
         self.assertEqual(test_list.tail,n1, "n1 is tail")
-        self.assertIsNone(n1.previous, "n1 previous is none")
+        self.assertIsNone(n1.prev, "n1 prev is none")
         self.assertIsNone(n1.next, "n1 next is none")
 
     def test_add_in_tail_not_empty(self):
@@ -31,16 +31,16 @@ class TestLinkedList2(unittest.TestCase):
         test_list.add_in_tail(n1)
         self.assertEqual(test_list.head,n1, "n1 is head")
         self.assertEqual(test_list.tail,n1, "n1 is tail")
-        self.assertIsNone(n1.previous, "n1 previous is none")
+        self.assertIsNone(n1.prev, "n1 prev is none")
         self.assertIsNone(n1.next, "n1 next is none")
         n2=Node(3)
         test_list.add_in_tail(n2)
         self.assertEqual(test_list.head, n1, "n1 is head")
         self.assertEqual(test_list.tail, n2, "n2 is tail")
-        self.assertIsNone(test_list.head.previous, "Head previous is none")
-        self.assertEqual(test_list.tail.previous, n1, "n1 is tail previous")
+        self.assertIsNone(test_list.head.prev, "Head prev is none")
+        self.assertEqual(test_list.tail.prev, n1, "n1 is tail prev")
         self.assertIsNone(test_list.tail.next)
-        self.assertEqual(n2.previous, n1, "n1 previous of n2")
+        self.assertEqual(n2.prev, n1, "n1 prev of n2")
         self.assertEqual(n1.next, n2, "n2 is n1 next")
 
     def test_find_one_in_the_middle(self):
@@ -132,9 +132,9 @@ class TestLinkedList2(unittest.TestCase):
         print (f"After deletion in {test_name}")
         test_list.print_all_nodes()
         self.assertEqual(n1.next, n3, "n3 should be followed by n1")
-        print(f"Print n3.previous.value is {n3.previous.value}")
+        print(f"Print n3.prev.value is {n3.prev.value}")
         print(f"Print n1.next.value is {n1.next.value}")
-        #self.assertEqual(n3.previous, n1, "n1 should be previous of n3")
+        #self.assertEqual(n3.prev, n1, "n1 should be prev of n3")
         self.assertEqual(test_list.head, n1, "n1 should be head")
         self.assertEqual(test_list.tail, n3, "n3 should be tail")
 
@@ -207,8 +207,8 @@ class TestLinkedList2(unittest.TestCase):
         self.assertEqual(n1.next, n2, "n3 should be followed by n1")
         self.assertEqual(test_list.head, n1, "n1 should be head")
         self.assertEqual(test_list.tail, n3, "n3 should be tail")
-        self.assertEqual(n3.previous,n2)
-        self.assertEqual(n2.previous,n1)
+        self.assertEqual(n3.prev,n2)
+        self.assertEqual(n2.prev,n1)
     
     def test_delete_several_in_everywhere(self):
         test_list=LinkedList2()
@@ -235,8 +235,8 @@ class TestLinkedList2(unittest.TestCase):
         self.assertEqual(n1.next, n2, "n3 should be followed by n1")
         self.assertEqual(test_list.head, n1, "n1 should be head")
         self.assertEqual(test_list.tail, n3, "n3 should be tail")
-        self.assertEqual(n3.previous,n2)
-        self.assertEqual(n2.previous,n1)
+        self.assertEqual(n3.prev,n2)
+        self.assertEqual(n2.prev,n1)
 
     def test_insert_in_the_empty_list(self):
         n1=Node(12)       
@@ -260,7 +260,7 @@ class TestLinkedList2(unittest.TestCase):
         self.assertEqual(n3.next, test_list.tail, "Tail should be n3")
         self.assertEqual(n4, test_list.tail, "Head should equal n4")
         self.assertEqual(n4.next,None, "n4 should be before n1")
-        self.assertEqual(n4.previous, n3, "n4 previous should be n3")
+        self.assertEqual(n4.prev, n3, "n4 prev should be n3")
 
     def test_add_in_the_beginning(self):
         n1=Node(12)
@@ -275,8 +275,8 @@ class TestLinkedList2(unittest.TestCase):
         self.assertEqual(n4.value, test_list.head.value, "Tail should equal n4")
         self.assertEqual(n4.next, n1, "Tail should be n3")
         self.assertEqual(n4, test_list.head, "Head should equal n4")
-        self.assertEqual(n4.previous,None, "n4 previous should be None")
-        self.assertEqual(n1.previous, n4, "n4 previous should be n3")
+        self.assertEqual(n4.prev,None, "n4 prev should be None")
+        self.assertEqual(n1.prev, n4, "n4 prev should be n3")
 
     def test_add_in_the_beginning_in_the_empty(self):        
         n4=Node(4)
@@ -286,7 +286,7 @@ class TestLinkedList2(unittest.TestCase):
         self.assertEqual(n4.value, test_list.head.value, "Tail should equal n4")
         self.assertEqual(n4.next, None, "Tail should be n3")
         self.assertEqual(n4, test_list.tail, "Head should equal n4")
-        self.assertEqual(n4.previous,None, "n4 previous should be None")
+        self.assertEqual(n4.prev,None, "n4 prev should be None")
 
     def test_clean(self):
         test_list=LinkedList2()
