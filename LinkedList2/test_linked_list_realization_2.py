@@ -250,6 +250,50 @@ class TestLinkedList2(unittest.TestCase):
         self.assertEqual(n4, test_list.tail, "Head should equal n4")
         self.assertEqual(n4.next,None, "n4 should be before n1")
         self.assertEqual(n4.prev, n3, "n4 prev should be n3")
+    
+    def test_insert_in_the_middle(self):
+        n1=Node(1)
+        n3=Node(3)
+        n5=Node(5)
+        n4=Node(4)
+        n2=Node(2)
+        test_list=LinkedList2()
+        test_list.add_in_tail(n1)
+        test_list.add_in_tail(n3)
+        test_list.add_in_tail(n5)
+        test_list.insert(n3,n4)
+        self.assertEqual(n3.next, n4, "n3 next is n4")
+        self.assertEqual(n4.prev, n3, "n4 prev is n3")
+        self.assertEqual(n5, test_list.tail, "Tail should equal n5")
+        self.assertEqual(n1, test_list.head, "n1 should be head")
+        test_list.insert(n1,n2)        
+        self.assertEqual(n1.next, n2, "n1 next is n2")
+        self.assertEqual(n2.prev, n1, "n5 prev is n1")
+        self.assertEqual(n2.next, n3, "n2 next is n3")
+        self.assertEqual(n2.prev, n1, "n2 prev is n1")
+        self.assertEqual(n5, test_list.tail, "Tail should equal n5")
+        self.assertEqual(n1, test_list.head, "Head should equal n1")
+
+
+    def test_insert_in_the_end_next(self):
+        n1=Node(12)
+        n2=Node(1)
+        n3=Node(123)
+        n4=Node(4)
+        test_list=LinkedList2()
+        test_list.add_in_tail(n1)
+        test_list.add_in_tail(n2)
+        test_list.add_in_tail(n3)
+        test_list.insert(n3,n4)
+        self.assertEqual(n3.next, n4, "n4 next is n3")
+        self.assertEqual(n4.prev, n3, "n4 prev is n2")
+        self.assertEqual(n4, test_list.tail, "Tail should equal n4")
+        self.assertEqual(n1, test_list.head, "n4 should be before n1")
+
+
+    
+        
+
 
     def test_add_in_the_beginning(self):
         n1=Node(12)

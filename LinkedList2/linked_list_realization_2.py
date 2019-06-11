@@ -45,7 +45,7 @@ class LinkedList2:
         while node is not None:
             length+=1
             node = node.next
-        return length
+        return length   
     
     def delete(self,val, all=False):
         node=self.head
@@ -82,13 +82,14 @@ class LinkedList2:
         if afterNode is not None:
             node = self.head
             while node is not None:
-
-                if afterNode is node:
+                if  node is afterNode:
+                    #case of insert in the middle            
                     newNode.next=node.next
                     newNode.prev=node
                     node.next=newNode
-                    return
-            node=node.next
+                    if self.tail is node:
+                        self.tail=newNode    
+                node=node.next
         else:
             if self.head is None and self.tail is None: #case of empty list
                 self.head=newNode
