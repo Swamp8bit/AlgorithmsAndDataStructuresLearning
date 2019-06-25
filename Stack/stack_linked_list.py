@@ -36,13 +36,8 @@ class Stack:
                 item=self.end
                 self.end=item.prev
                 item.prev.next=None #case from two items                              
-            return item.value
-            
-    def print_stack(self):
-        node=self.start
-        while node is not None:
-            print(node.value)
-            node=node.next
+            return item.value           
+   
 
     def push(self, value):
         item=Node(value)
@@ -62,21 +57,4 @@ class Stack:
         else:
             return self.end.value
 
-if "__main__"==__name__:
-    test_stack=Stack()
-    print (test_stack.size())
-    print (test_stack.is_empty())
-    test_stack.push(2)
-    test_stack.push(3)
-    test_stack.push(-100)
-    assert(test_stack.end.prev.value, 3)
-    #print(test_stack.end.value)
-    test_stack.print_stack()
-    print(test_stack.pop())
-    print("########")
-    test_stack.print_stack()
-    while test_stack.size() > 0:
-        print(test_stack.pop())
-        print(test_stack.pop())
-    test_stack.print_stack()
     
