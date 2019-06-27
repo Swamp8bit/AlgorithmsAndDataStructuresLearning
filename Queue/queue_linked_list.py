@@ -40,18 +40,3 @@ class Queue:
             return True
         else:
             return False
-
-if __name__ == "__main__":
-    q=Queue()
-    q.enqueue(1)
-    q.enqueue(123)
-    q.enqueue("zhopa")
-    print(q.size())
-    print(q.dequeue())
-    print(q.size())
-    print(q.size())
-    print(q.dequeue())
-    print(q.size())
-    print(q.size())
-    print(q.dequeue())
-    print(q.size())
