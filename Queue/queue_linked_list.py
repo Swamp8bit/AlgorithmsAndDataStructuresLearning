@@ -20,20 +20,27 @@ class Queue:
     def dequeue(self): #need to remove element from the beginning of the list
         if self.start is not None:
             item=self.start.value
-            self.start=self.start.next
+            if self.start is self.end:
+                self.start=None
+                self.end=None
+            else:
+                self.start=self.start.next
             return item       
         else:            
             return None
             
 
     def size(self):
-        sum=0
-        if self.start is not None:        
+        
+        if self.start is not None:
+            sum=0
             node=self.start        
             while node is not None:
                 sum+=1
                 node=node.next
-        return sum
+            return sum
+        else:
+            return 0
 
     def is_empty(self):
         if self.size() ==0:
