@@ -19,8 +19,8 @@ class TestStack(unittest.TestCase):
         stack=Stack()
         stack.push(1)
         stack.pop()
-        self.assertEqual(stack.end, None)
-        self.assertEqual(stack.start, None)
+        self.assertEqual(stack.tail, None)
+        self.assertEqual(stack.head, None)
         self.assertEqual(stack.size(),0)
     
     def test_pop_two_element(self):

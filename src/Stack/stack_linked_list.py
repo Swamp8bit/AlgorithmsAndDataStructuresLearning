@@ -6,17 +6,23 @@ class Node:
 
 class Stack:
     def __init__(self):
-        self.start=None
-        self.end=None
+        self.head=None
+        self.tail=None
     
     def get_head(self):
-        return self.start
+        if self.head is None:
+            return None
+        else:
+            return self.head.value
     
     def get_tail(self):
-        return self.end
+        if self.tail is None:
+            return None
+        else:
+            return self.tail.value
     
     def size(self):
-        node = self.start
+        node = self.head
         length=0
         while node is not None:
             length+=1
@@ -31,37 +37,37 @@ class Stack:
 
     
     def pop(self):
-        if self.start is None:
+        if self.head is None:
             return None #if the stack is empty
         else:
-            if self.start.next is None: #case from one item
-                item=self.start
-                self.start=None
-                self.end=None
+            if self.head.next is None: #case from one item
+                item=self.head
+                self.head=None
+                self.tail=None
             else: 
-                item=self.end
-                self.end=item.prev
+                item=self.tail
+                self.tail=item.prev
                 item.prev.next=None #case from two items                              
             return item.value           
    
 
     def push(self, value):
         item=Node(value)
-        if self.start is None:
-            self.start = item         
+        if self.head is None:
+            self.head = item         
             item.next = None
             item.prev = None
         else:
-            self.end.next=item
-            item.prev=self.end          
-        self.end=item
+            self.tail.next=item
+            item.prev=self.tail          
+        self.tail=item
 
     
 
     def peek(self):
-        if self.start is None:
+        if self.head is None:
             return None
         else:
-            return self.end.value
+            return self.tail.value
 
     

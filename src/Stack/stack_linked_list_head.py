@@ -2,15 +2,17 @@ class Node:
     def __init__(self, v):
         self.value=v
         self.next=None
+        self.prev=None
         
 
 class StackHead:
     def __init__(self):
-        self.start=None
+        self.head=None
+        self.tail=None
         
     
     def size(self):
-        node = self.start
+        node = self.head
         length=0
         while node is not None:
             length+=1
@@ -24,33 +26,42 @@ class StackHead:
             return False
     
     def pop(self):
-        if self.start is None:
+        if self.head is None:
             return None #if the stack is empty
         else:
-            item=self.start
-            if self.start.next is not None:                
-                self.start=self.start.next            
+            item=self.head
+            if self.head.next is not None:                
+                self.head=self.head.next
+            elif self.head.next is self.tail:
+                self.head=self.tail                      
             else:
-                self.start=None
+                self.head=None
+                self.tail=None
             return item.value            
 
     def push(self, value):
         item=Node(value)
-        if self.start is None:
-            self.start=item
+        if self.head is None:
+            self.head=item
+            self.tail=item
+        elif self.tail is self.head: # case of 1 item
+            self.tail.prev=item
+            self.head=item
+            item.next=self.tail
         else:
-            prev_start=self.start
-            self.start=item
-            item.next=prev_start
+            prev_head=self.head         
+            self.head=item
+            item.next=prev_head
+
 
     def peek(self):
         if self.is_empty():
             return None
         else:
-            return self.start.value
+            return self.head.value
 
     def print_stack(self):
-        node=self.start
+        node=self.head
         while node is not None:
             print(node.value)
             node=node.next

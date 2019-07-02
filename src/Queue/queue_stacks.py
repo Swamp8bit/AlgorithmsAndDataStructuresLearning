@@ -22,15 +22,7 @@ class QueueStacks:
         return Stack.get_head(self)
     
     def get_tail(self):
-        return Stack.get_tail(self)
-
-    def print_all(self):        
-        n=self.get_head()
-        print("Printing queue ...")
-        while n is not None:
-            print(n.value)
-            n=n.next
-    
+        return Stack.get_tail(self)    
 
     
 
