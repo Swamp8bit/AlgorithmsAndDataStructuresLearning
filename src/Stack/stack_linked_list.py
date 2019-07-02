@@ -9,6 +9,12 @@ class Stack:
         self.start=None
         self.end=None
     
+    def get_head(self):
+        return self.start
+    
+    def get_tail(self):
+        return self.end
+    
     def size(self):
         node = self.start
         length=0
@@ -50,6 +56,7 @@ class Stack:
             item.prev=self.end          
         self.end=item
 
+    
 
     def peek(self):
         if self.start is None:

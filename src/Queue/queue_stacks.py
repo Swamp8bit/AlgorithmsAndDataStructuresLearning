@@ -1,12 +1,37 @@
-import sys
-import os
-sys.path.append('..')
-sys.path.append(os.path.join(sys.path[0], '../Stack', '../../AlgorithmsAndDataStructures'))
-from stack_linked_list import Stack as StackTail
-from stack_linked_list_head import StackHead 
-s1=StackHead()
-s1.push(1)
+"""Queue implementation with help of stacks"""
+from src.Stack.stack_linked_list import Stack
+from src.Stack.stack_linked_list_head import StackHead
+class Node:
+    def __init__(self,v):
+        self.next=None
+        self.value=v
+class QueueStacks:
+    def __init__(self):
+        Stack.__init__(self) #initialize with stack end
+    
+    def enqueue(self, item): #need to add element to the end of the list
+        Stack.push(self, item)
+    
+    def dequeue(self): #need to remove element from the beginning of the list
+        return StackHead.pop(self)
+    
+    def size(self):
+        return Stack.size(self)
+    
+    def get_head(self):
+        return Stack.get_head(self)
+    
+    def get_tail(self):
+        return Stack.get_tail(self)
 
-if __name__ == "__main__":
-    print(s1.pop())
+    def print_all(self):        
+        n=self.get_head()
+        print("Printing queue ...")
+        while n is not None:
+            print(n.value)
+            n=n.next
+    
+
+    
+
 
