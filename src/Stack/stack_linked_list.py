@@ -55,8 +55,7 @@ class Stack:
         item=Node(value)
         if self.head is None:
             self.head = item         
-            item.next = None
-            item.prev = None
+            
         else:
             self.tail.next=item
             item.prev=self.tail          
