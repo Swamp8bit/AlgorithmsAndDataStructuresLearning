@@ -47,7 +47,8 @@ class Stack:
             else: 
                 item=self.tail
                 self.tail=item.prev
-                item.prev.next=None #case from two items                              
+                if self.tail:
+                    self.tail.next=None #case from two items                              
             return item.value           
    
 

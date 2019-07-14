@@ -9,9 +9,9 @@ class TestDeque(unittest.TestCase):
     def setUp(self):
         self.deques={}
         test_deque1=Deque()
-        test_deque2=DequeStacks()        
+        #test_deque2=DequeStacks()        
         self.deques["DequeDefault"]=test_deque1
-        self.deques["DequeStacks"]=test_deque2
+        #self.deques["DequeStacks"]=test_deque2
         
 
     def test_deque_empty_list(self):           
@@ -81,35 +81,36 @@ class TestDeque(unittest.TestCase):
         with self.assertRaises(Exception):
             is_palindrome(test4)
            
-    # def test_deque_default_add(self):
-    #     for q_name,q in self.deques.items():
-    #         with self.subTest(q_name):
-    #             length=1000
-    #             q.endeque(1)
-    #             q.dedeque()
-    #             q.dedeque()
-    #             self.assertEqual(q.size(),0,f"In  deque {q_name} The size is 0")
-    #             q.endeque(1)
-    #             self.assertEqual(q.size(),1,f"In  deque {q_name} The size is 1")
-    #             for i in range(1,length):
-    #                 q.endeque(i)
-    #                 self.assertEqual(q.size(),i+1, f"In  deque {q_name} The size is {i+1}")
-    #             self.assertEqual(q.size(),length, f"In  deque {q_name} The size is {length}")
 
 
-    # def test_lof_of_dedeque(self):
-    #     for q_name,q in self.deques.items():
-    #         with self.subTest(q_name):
-    #             length=1000
-    #             for i in range(0,length):
-    #                 q.endeque(i)
 
-    #             self.assertEqual(q.size(),length, f"In  deque {q_name} The size is {length}")
-    #             for i in range(0,length):
-    #                 check=q.dedeque()
-    #                 self.assertEqual(check, i, f"In  deque {q_name} dedeque is {i}")
-    #                 check_size=length-i-1
-    #                 self.assertEqual(check_size, q.size(), f"In  deque {q_name} size is {check_size}")
+    def test_lof_of_removing_front_tail(self):
+        for q_name,q in self.deques.items():
+            with self.subTest(q_name):
+                length=1000
+                for i in range(0,length):
+                    q.addFront(i)
+
+                self.assertEqual(q.size(),length, f"In  deque {q_name} The size is {length}")
+                for i in range(0,length):
+                    check=q.removeTail()
+                    self.assertEqual(check, i, f"In  deque {q_name} dedeque is {i}")
+                    check_size=length-i-1
+                    self.assertEqual(check_size, q.size(), f"In  deque {q_name} size is {check_size}")
+
+    def test_lof_of_removing_tail_front(self):
+        for q_name,q in self.deques.items():
+            with self.subTest(q_name):
+                length=1000
+                for i in range(0,length):
+                    q.addTail(i)
+
+                self.assertEqual(q.size(),length, f"In  deque {q_name} The size is {length}")
+                for i in range(0,length):
+                    check=q.removeFront()
+                    self.assertEqual(check, i, f"In  deque {q_name} dedeque is {i}")
+                    check_size=length-i-1
+                    self.assertEqual(check_size, q.size(), f"In  deque {q_name} size is {check_size}")
 
     # def test_lof_of_dedeque_with_additional_checks(self):
     #     for q_name,q in self.deques.items():
