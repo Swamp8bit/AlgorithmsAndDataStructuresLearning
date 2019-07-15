@@ -135,69 +135,72 @@ class OrderedList:
 
     def delete(self, val):        
         to_delete=None
-        if self.__ascending:
-            if self.compare(val,self.head.value)<0:
-                return None
-            elif self.compare(val,self.head.value)==0:
-                if self.head.next is not None:
-                    new_head=self.head.next
-                    self.head=new_head
-                    new_head.prev=None
-                    return
-                else:
-                    self.tail=None
-                    self.head=None
-                    return
-            elif self.compare(val,self.tail.value)>0:
-                return None
-            elif self.compare(val,self.tail.value)==0:
-                new_tail=self.tail.prev
-                self.tail=new_tail
-                new_tail.next=None
-                return
-            else:
-                current_node=self.head
-                while current_node is not None and to_delete is None:
-                    if self.compare(val,current_node.value) < 0:
-                        return None # it is not necessary to search anymore
-                    elif self.compare(val,current_node.value) == 0:                     
-                        to_delete=current_node                                             
-                    current_node=current_node.next
-        else:
-            if self.compare(val,self.head.value)>0:
-                return None
-            elif self.compare(val,self.head.value)==0:
-                if self.head.next is not None:
-                    new_head=self.head.next
-                    self.head=new_head
-                    new_head.prev=None
-                    return
-                else:
-                    self.tail=None
-                    self.head=None
-                    return
-            elif self.compare(val,self.tail.value)<0:
-                return None
-            elif self.compare(val,self.tail.value)==0:
-                new_tail=self.tail.prev
-                self.tail=new_tail
-                new_tail.next=None
-                return
-            else:
-                current_node=self.head
-                while current_node is not None and to_delete is None:
-                    if self.compare(val,current_node.value) > 0:
-                        return None # it is not necessary to search anymore
-                    elif self.compare(val,current_node.value) == 0:                        
-                        to_delete=current_node                        
-                    current_node=current_node.next
-        if to_delete is not None:
-            after_node = to_delete.next
-            prev_node = to_delete.prev
-            after_node.prev=prev_node
-            prev_node.next=after_node
-        else:
+        if self.head is None:
             return None
+        else:
+            if self.__ascending:
+                if self.compare(val,self.head.value)<0:
+                    return None
+                elif self.compare(val,self.head.value)==0:
+                    if self.head.next is not None:
+                        new_head=self.head.next
+                        self.head=new_head
+                        new_head.prev=None
+                        return
+                    else:
+                        self.tail=None
+                        self.head=None
+                        return
+                elif self.compare(val,self.tail.value)>0:
+                    return None
+                elif self.compare(val,self.tail.value)==0:
+                    new_tail=self.tail.prev
+                    self.tail=new_tail
+                    new_tail.next=None
+                    return
+                else:
+                    current_node=self.head
+                    while current_node is not None and to_delete is None:
+                        if self.compare(val,current_node.value) < 0:
+                            return None # it is not necessary to search anymore
+                        elif self.compare(val,current_node.value) == 0:                     
+                            to_delete=current_node                                             
+                        current_node=current_node.next
+            else:
+                if self.compare(val,self.head.value)>0:
+                    return None
+                elif self.compare(val,self.head.value)==0:
+                    if self.head.next is not None:
+                        new_head=self.head.next
+                        self.head=new_head
+                        new_head.prev=None
+                        return
+                    else:
+                        self.tail=None
+                        self.head=None
+                        return
+                elif self.compare(val,self.tail.value)<0:
+                    return None
+                elif self.compare(val,self.tail.value)==0:
+                    new_tail=self.tail.prev
+                    self.tail=new_tail
+                    new_tail.next=None
+                    return
+                else:
+                    current_node=self.head
+                    while current_node is not None and to_delete is None:
+                        if self.compare(val,current_node.value) > 0:
+                            return None # it is not necessary to search anymore
+                        elif self.compare(val,current_node.value) == 0:                        
+                            to_delete=current_node                        
+                        current_node=current_node.next
+            if to_delete is not None:
+                after_node = to_delete.next
+                prev_node = to_delete.prev
+                after_node.prev=prev_node
+                prev_node.next=after_node
+            else:
+                return None
         
 
     def clean(self,asc):

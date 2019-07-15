@@ -53,6 +53,14 @@ class TestOrderedList(unittest.TestCase):
         self.assertEqual(o_list_asc.head.value, test_value[0], f"The head is {test_value[0]}" )
         self.assertEqual(o_list_asc.tail.value, test_value[0], f"The tail is {test_value[0]}" )
 
+    def test_delete_empty_list(self):
+        o_list_asc=OrderedList(asc=True)
+        self.assertIsNone(o_list_asc.delete(10), "Should be non if the list is empty")
+    
+    def test_delete_empty_list_string(self):
+        o_list_asc=OrderedStringList(asc=True)
+        self.assertIsNone(o_list_asc.delete('Hello'), "Should be non if the list is empty")
+
     def test_add_three_asc(self):
         o_list_asc=OrderedList(asc=True)
         test_value=self.test_value
@@ -134,6 +142,7 @@ class TestOrderedList(unittest.TestCase):
         #r=o_list_desc.get_all()
         
 
+    
     def test_string_list(self):
         test_string=self.test_string_value
         strin_o_list_desc=OrderedStringList(asc=False)
