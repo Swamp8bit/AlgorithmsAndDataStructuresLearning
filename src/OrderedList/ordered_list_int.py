@@ -223,17 +223,17 @@ class OrderedList:
             node = node.next
         return r
 
-    def print_all(self):
-        node=self.head
-        if self.__ascending:
-            print("The list is ascending")
-        else:
-            print("The list is descending")
-        print(f'The head is {self.head.value}')
-        print(f'The tail is {self.tail.value}')
-        while node is not None:
-            print(node.value)
-            node=node.next
+    # def print_all(self):
+    #     node=self.head
+    #     if self.__ascending:
+    #         print("The list is ascending")
+    #     else:
+    #         print("The list is descending")
+    #     print(f'The head is {self.head.value}')
+    #     print(f'The tail is {self.tail.value}')
+    #     while node is not None:
+    #         print(node.value)
+    #         node=node.next
             
 
 class OrderedStringList(OrderedList):
@@ -249,15 +249,16 @@ class OrderedStringList(OrderedList):
             return -1
         elif v1==v2:
             return 0
-if __name__ == "__main__":
-    test_value=[123,1000,-432,1,0,12345,0,123,-321]
-    o_list_desc=OrderedList(False)
-    o_list_asc=OrderedList(True)
-    for item in test_value:
-        o_list_desc.add(item)
-        o_list_asc.add(item)
-    o_list_desc.print_all()
-    o_list_asc.print_all()
+
+# if __name__ == "__main__":
+#     test_value=[123,1000,-432,1,0,12345,0,123,-321]
+#     o_list_desc=OrderedList(False)
+#     o_list_asc=OrderedList(True)
+#     for item in test_value:
+#         o_list_desc.add(item)
+#         o_list_asc.add(item)
+#     o_list_desc.print_all()
+#     o_list_asc.print_all()
 
     
     
