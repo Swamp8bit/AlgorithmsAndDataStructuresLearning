@@ -25,8 +25,7 @@ class OrderedList:
     def add (self, value): #add realization from head to tail
         stop=False
         node_to_add=Node(value)
-        # after_node=None
-        # before_node=None
+       
         if self.head is None:
             self.head=node_to_add
             self.tail=node_to_add
@@ -70,7 +69,7 @@ class OrderedList:
                             self.tail.prev=old_tail         
             else:
                 if self.head is self.tail:                    
-                    if self.compare(value,self.head.value) >= 0:
+                    if self.compare(value,self.head.value) >= 0: 
                         self.head=node_to_add
                         self.tail.prev=self.head
                         self.head.next=self.tail
@@ -79,11 +78,11 @@ class OrderedList:
                         self.head.next=node_to_add
                         self.tail.prev=self.head
                 else:
-                    if self.compare(value, self.head.value) >= 0:
-                        old_tail=self.tail
-                        self.tail=node_to_add
-                        old_tail.next=node_to_add
-                        self.tail.prev=old_tail
+                    if self.compare(value, self.head.value) >= 0: #add to head
+                        old_head=self.head
+                        self.head=node_to_add
+                        old_head.prev=self.head
+                        self.head.next=old_head
                     else:
                         current_from_head=self.head
                         while current_from_head is not None and stop==False:
@@ -224,6 +223,19 @@ class OrderedList:
             node = node.next
         return r
 
+    def print_all(self):
+        node=self.head
+        if self.__ascending:
+            print("The list is ascending")
+        else:
+            print("The list is descending")
+        print(f'The head is {self.head.value}')
+        print(f'The tail is {self.tail.value}')
+        while node is not None:
+            print(node.value)
+            node=node.next
+            
+
 class OrderedStringList(OrderedList):
     def __init__(self, asc):
         super().__init__(asc)
@@ -237,7 +249,17 @@ class OrderedStringList(OrderedList):
             return -1
         elif v1==v2:
             return 0
+if __name__ == "__main__":
+    test_value=[123,1000,-432,1,0,12345,0,123,-321]
+    o_list_desc=OrderedList(False)
+    o_list_asc=OrderedList(True)
+    for item in test_value:
+        o_list_desc.add(item)
+        o_list_asc.add(item)
+    o_list_desc.print_all()
+    o_list_asc.print_all()
 
-
+    
+    
 
     

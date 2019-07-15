@@ -3,7 +3,7 @@ from src.OrderedList.ordered_list_int import OrderedList, Node, OrderedStringLis
 
 class TestOrderedList(unittest.TestCase):
     def setUp(self):
-        self.test_value=[123,1000,-432,12345,0,3]
+        self.test_value=[123,1000,-432,12345,0,-321]
         self.test_string_value=["Alabama ", "Amalgama", "Gavana", "sdfiwe", "    "]
         
     def test_add_empty_one_asc(self):
@@ -69,7 +69,7 @@ class TestOrderedList(unittest.TestCase):
         o_list_asc.add(test_value[1])
         o_list_asc.add(test_value[2])
         
-        self.assertEqual(o_list_asc.len(), 3, "The size is 4")
+        self.assertEqual(o_list_asc.len(), 3, "The size is 3")
         self.assertEqual(o_list_asc.head.value, test_value[2], f"The head is {test_value[2]}" )
         self.assertEqual(o_list_asc.tail.value, test_value[1], f"The head is {test_value[1]}" )
 
@@ -88,15 +88,15 @@ class TestOrderedList(unittest.TestCase):
         o_list_asc=OrderedList(asc=False)
         test_value=self.test_value
         self.assertEqual(o_list_asc.len(), 0, "The size is 0")
-        o_list_asc.add(test_value[0])
-        o_list_asc.add(test_value[1])
-        o_list_asc.add(test_value[2])
-        o_list_asc.add(9)
-        o_list_asc.add(9)
+        for item in test_value:
+            o_list_asc.add(item)
+        self.assertEqual(o_list_asc.len(), len(test_value), f"The size is {len(test_value)}")
+        self.assertEqual(o_list_asc.head.value, test_value[3], f"The head is {test_value[3]}" )
+        self.assertEqual(o_list_asc.tail.value, test_value[2], f"The tail is {test_value[2]}" )
         for i in range(10):
             o_list_asc.add(i)
-        self.assertEqual(o_list_asc.len(), 15, "The size is 13")
-        self.assertEqual(o_list_asc.head.value, test_value[1], f"The head is {test_value[1]}" )
+        self.assertEqual(o_list_asc.len(), 16, "The size is 15")
+        self.assertEqual(o_list_asc.head.value, test_value[3], f"The head is {test_value[4]}" )
         self.assertEqual(o_list_asc.tail.value, test_value[2], f"The head is {test_value[2]}" )
     
     def test_delete_one(self):
