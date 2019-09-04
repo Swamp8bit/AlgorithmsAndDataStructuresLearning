@@ -35,16 +35,16 @@ class NativeDictionary:
             return False
 
     def put(self, key, value):
-        slot = self.hash_fun(key)
-        if slot is not None:
-            if self.is_key(key):
-
-                self.values[slot] = value
-            else:
+        if self.is_key(key):
+            slot=self.slots.index(key)
+            self.values[slot] = value
+        else:
+            slot = self.hash_fun(key)
+            if slot is not None:
                 self.slots[slot] = key
                 self.values[slot] = value
-        else:
-            return None
+            else:
+                return None
         # гарантированно записываем
         # значение value по ключу key
 
@@ -75,11 +75,14 @@ if __name__ == "__main__":
 
     TEST_STRINGS_keys = ["Open", "afile", "on23thedisk", "please", "change1"]
     TEST_STRINGS_values = ["Irina", "Zheka", "Kate", "Gorgoza", "Baragoz"]
-    for pos in range(len(TEST_STRINGS_keys)):
-        print(f"hash_fun of {TEST_STRINGS_keys[pos]} is {map1.hash_fun(TEST_STRINGS_keys[pos])}")
-        print(f"{pos} string of keys {TEST_STRINGS_keys[pos]} and values {TEST_STRINGS_values[pos]}")
-        print(map1.put(TEST_STRINGS_keys[pos], TEST_STRINGS_values[pos]))
-    print("#######")
-    for pos in range(len(TEST_STRINGS_keys)):
-        pass
+    map1.put("School", "Odin")
+    map1.put("School", "Dva")
+
+    # for pos in range(len(TEST_STRINGS_keys)):
+    #     print(f"hash_fun of {TEST_STRINGS_keys[pos]} is {map1.hash_fun(TEST_STRINGS_keys[pos])}")
+    #     print(f"{pos} string of keys {TEST_STRINGS_keys[pos]} and values {TEST_STRINGS_values[pos]}")
+    #     print(map1.put(TEST_STRINGS_keys[pos], TEST_STRINGS_values[pos]))
+    # print("#######")
+    # for pos in range(len(TEST_STRINGS_keys)):
+    #     pass
 
