@@ -70,19 +70,5 @@ class NativeDictionary:
             return None
 
 
-if __name__ == "__main__":
-    map1 = NativeDictionary(17)
 
-    TEST_STRINGS_keys = ["Open", "afile", "on23thedisk", "please", "change1"]
-    TEST_STRINGS_values = ["Irina", "Zheka", "Kate", "Gorgoza", "Baragoz"]
-    map1.put("School", "Odin")
-    map1.put("School", "Dva")
-
-    # for pos in range(len(TEST_STRINGS_keys)):
-    #     print(f"hash_fun of {TEST_STRINGS_keys[pos]} is {map1.hash_fun(TEST_STRINGS_keys[pos])}")
-    #     print(f"{pos} string of keys {TEST_STRINGS_keys[pos]} and values {TEST_STRINGS_values[pos]}")
-    #     print(map1.put(TEST_STRINGS_keys[pos], TEST_STRINGS_values[pos]))
-    # print("#######")
-    # for pos in range(len(TEST_STRINGS_keys)):
-    #     pass
 
