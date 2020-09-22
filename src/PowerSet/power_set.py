@@ -73,9 +73,9 @@ class PowerSet:
 
         if self.size() == 0 or set2.size == 0:
             return self
-        result = PowerSet(self.sz)
+        result = PowerSet()
         for value in self.elements:
-            if not value or set2.get(value):
+            if set2.get(value):
                 continue
             else:
                 result.put(value)
