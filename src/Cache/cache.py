@@ -145,9 +145,9 @@ class NativeCache():
                 self.keys[slot_to_clean] = key
                 self.values[slot_to_clean] = value
 
-    def illustration(self):
-        for s, v, h in zip(self.keys, self.values, self.hits):
-            print(f"Key {s} value {v} hit {h}")
+    # def illustration(self):
+    #     for s, v, h in zip(self.keys, self.values, self.hits):
+    #         print(f"Key {s} value {v} hit {h}")
 
 # from random import choice
 # import requests
