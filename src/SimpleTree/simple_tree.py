@@ -36,8 +36,8 @@ class SimpleTree:
         # ваш код выдачи всех узлов дерева в определённом порядке
         result=set()
         result.add(self.Root)
-        result.update(self.Root.Children)
         if self.Root.Children:
+            result.update(self.Root.Children)
             for node in self.Root.Children:
                 node_tree=SimpleTree(node)
                 result.update(node_tree.GetAllNodes())
@@ -48,14 +48,13 @@ class SimpleTree:
     def FindNodesByValue(self, val):
         # ваш код поиска узлов по значению
         result=[]
+
         if self.Root.NodeValue == val:
             result.append(self.Root)
         if self.Root.Children:
             for node in self.Root.Children:
-                node_tree = SimpleTree(node)
-                if node.NodeValue==val:
-                    result.append(node_tree.FindNodesByValue(val))
-
+                nodetree=SimpleTree(node)
+                result.extend(nodetree.FindNodesByValue(val))
         return result
 
     def MoveNode(self, OriginalNode, NewParent):
@@ -94,16 +93,16 @@ class SimpleTree:
 
                 result += node_tree.LeafCount()
         return result
-#
+
 # if __name__ == '__main__':
 #     root=SimpleTreeNode('i am root!', None)
-#     root2 = SimpleTreeNode('i am root!', None)
+#     root2 = SimpleTreeNode('i am leafe1!', None)
 #     tree=SimpleTree(root)
-#     leaf1=SimpleTreeNode('i am leafe1!', None)
-#     leaf2 = SimpleTreeNode('i am leafe2!', None)
-#     leaf3 = SimpleTreeNode('i am leafe3!', None)
-#     leaf4 = SimpleTreeNode('i am leafe4!', None)
-#     leaf5 = SimpleTreeNode('i am leafe5!', None)
+#     leaf1 = SimpleTreeNode('i am leafe1!', None)
+#     leaf2 = SimpleTreeNode('i am leafe1!', None)
+#     leaf3 = SimpleTreeNode('i am leafe1!', None)
+#     leaf4 = SimpleTreeNode('i am leafe1!', None)
+#     leaf5 = SimpleTreeNode('i am leafe1!', None)
 #     tree.AddChild(root,leaf1)
 #     tree.AddChild(root, leaf2)
 #     tree.AddChild(leaf2,leaf3)
@@ -116,7 +115,7 @@ class SimpleTree:
 #
 #     tree.PrintAllNodes()
 #     print(tree.GetAllNodes())
-#
+#     print('I am leafe wehre are you')
 #     print(tree.FindNodesByValue('i am leafe1!'))
 #     print(tree.Count())
 #     print(tree.LeafCount())
