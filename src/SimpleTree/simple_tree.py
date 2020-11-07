@@ -22,14 +22,14 @@ class SimpleTree:
 
         NodeToDelete.Parent.Children.remove(NodeToDelete)  # ваш код удаления существующего узла NodeToDelete
         NodeToDelete.Children=[]
-    # def PrintAllNodes(self):
-    #
-    #     print(self.Root.NodeValue)
-    #
-    #     if self.Root.Children:
-    #         for child in self.Root.Children:
-    #            child_tree=SimpleTree(child)
-    #            child_tree.PrintAllNodes()
+    def PrintAllNodes(self):
+
+        print(self.Root.NodeValue)
+
+        if self.Root.Children:
+            for child in self.Root.Children:
+               child_tree=SimpleTree(child)
+               child_tree.PrintAllNodes()
 
 
     def GetAllNodes(self):
@@ -60,8 +60,10 @@ class SimpleTree:
     def MoveNode(self, OriginalNode, NewParent):
         # ваш код перемещения узла вместе с его поддеревом --
         # в качестве дочернего для узла NewParent
+        OriginalNode.Parent.Children.remove(OriginalNode)
         OriginalNodeTree=SimpleTree(OriginalNode)
         OriginalNodeTree.Root.Parent=NewParent
+        self.AddChild(NewParent,OriginalNode)
 
     def Count(self):
         # количество всех узлов в дереве
@@ -72,14 +74,12 @@ class SimpleTree:
         if self.Root.Children:
             for node in self.Root.Children:
 
-                #print(node.NodeValue)
+
                 node_tree = SimpleTree(node)
 
                 result += node_tree.Count()
         return result
-    # def Level(self):
-    #     result = 0
-    #     self.Root
+
 
     def LeafCount(self): 
         # количество листьев в дереве
